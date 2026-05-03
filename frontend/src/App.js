@@ -1,51 +1,95 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect } from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Toaster } from "sonner";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { AdminAuthProvider, useAdminAuth } from "./contexts/AdminAuthContext";
+import { CartProvider } from "./contexts/CartContext";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import PublicLayout from "./components/PublicLayout";
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import ProductDetail from "./pages/ProductDetail";
+import Services from "./pages/Services";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminProductForm from "./pages/admin/AdminProductForm";
+import AdminServices from "./pages/admin/AdminServices";
+import AdminCategories from "./pages/admin/AdminCategories";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminOrderDetail from "./pages/admin/AdminOrderDetail";
+import AdminCustomers from "./pages/admin/AdminCustomers";
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
 
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
+const CustomerRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="p-10 text-center">Chargement…</div>;
+  if (!user) return <Navigate to="/connexion" replace />;
+  return children;
+};
+
+const AdminRoute = ({ children }) => {
+  const { admin, loading } = useAdminAuth();
+  if (loading) return <div className="p-10 text-center">Chargement…</div>;
+  if (!admin) return <Navigate to="/admin/connexion" replace />;
+  return children;
 };
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <AuthProvider>
+          <AdminAuthProvider>
+            <CartProvider>
+              <Toaster position="top-right" richColors closeButton data-testid="toast-region" />
+              <ScrollToTop />
+              <Routes>
+                {/* Public */}
+                <Route element={<PublicLayout />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/catalogue" element={<Catalog />} />
+                  <Route path="/produit/:id" element={<ProductDetail />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/panier" element={<Cart />} />
+                  <Route path="/a-propos" element={<About />} />
+                  <Route path="/connexion" element={<Login />} />
+                  <Route path="/inscription" element={<Register />} />
+                  <Route path="/mon-compte" element={<CustomerRoute><Profile /></CustomerRoute>} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+
+                {/* Admin */}
+                <Route path="/admin/connexion" element={<AdminLogin />} />
+                <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="produits" element={<AdminProducts />} />
+                  <Route path="produits/nouveau" element={<AdminProductForm />} />
+                  <Route path="produits/:id" element={<AdminProductForm />} />
+                  <Route path="services" element={<AdminServices />} />
+                  <Route path="categories" element={<AdminCategories />} />
+                  <Route path="commandes" element={<AdminOrders />} />
+                  <Route path="commandes/:id" element={<AdminOrderDetail />} />
+                  <Route path="clients" element={<AdminCustomers />} />
+                </Route>
+              </Routes>
+            </CartProvider>
+          </AdminAuthProvider>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

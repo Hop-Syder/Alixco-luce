@@ -5,23 +5,23 @@
   },
   {
     "content": "Phase 2: Obtenir design guidelines premium artisanal",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Backend FastAPI complet (auth, products, services, categories, orders, admin, uploads)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Frontend React complet (public + admin + auth + cart + WhatsApp checkout)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Seed data (categories, admin user, produits démo)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Test end-to-end avec testing_agent_v3",
-    "status": "pending"
+    "status": "in_progress"
   },
   {
     "content": "Phase 2: Fix bugs remontés par testing agent",
