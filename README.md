@@ -1,102 +1,257 @@
-# Alixco - Luce Application
+# 🌱 Alixco Luce
 
-Alixco-luce is a specialized application for managing lighting and greenhouse operations, built with the latest web technologies.
+> Plateforme intelligente de gestion d'éclairage et de serres agricoles
 
-## 🚀 Getting Started
+[![Status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/Hop-Syder/Alixco-luce)
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-### Prerequisites
+## 📋 Table des matières
 
-Before you begin, ensure you have the following installed:
+- [À propos](#-à-propos)
+- [Architecture](#-architecture)
+- [Démarrage rapide](#-démarrage-rapide)
+- [Stack technologique](#-stack-technologique)
+- [Structure du projet](#-structure-du-projet)
+- [Configuration](#-configuration)
+- [Développement](#-développement)
+- [Déploiement](#-déploiement)
+- [Tests](#-tests)
+- [Documentation](#-documentation)
 
-*   **Node.js**: >= 16.0.0
-*   **npm** (usually comes with Node.js) or **yarn**
-*   **MongoDB** (for development and production, unless using Atlas)
+## 🎯 À propos
 
-### 1. Installation
+**Alixco Luce** est une application web fullstack conçue pour optimiser la gestion de l'éclairage et des opérations agricoles en serre. Elle permet aux agriculteurs et aux responsables de:
 
-1.  Clone the repository:
-    ```bash
-    git clone <repository-url>
-    cd Alixco-luce
-    ```
+- ✅ Contrôler les systèmes d'éclairage en temps réel
+- ✅ Monitorer les conditions environnementales
+- ✅ Gérer les catégories de produits et les commandes
+- ✅ Accéder à un tableau de bord administrateur complet
+- ✅ Consulter les services et articles disponibles
 
-2.  Install dependencies:
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
-
-### 2. Configuration
-
-1.  Copy the environment variables file:
-    ```bash
-    cp .env.example .env
-    ```
-
-2.  Edit the `.env` file with your specific configuration (database URLs, API keys, ports, etc.).
-
-### 3. Running the App
-
-*   **Development Mode**:
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
-    This will start the server, usually on `http://localhost:3000`.
-
-*   **Production Build**:
-    ```bash
-    npm run build
-    # or
-    yarn build
-    ```
-
-*   **Production Run**:
-    ```bash
-    npm start
-    # or
-    yarn start
-    ```
-
-### 4. Database
-
-*   **Migrations**:
-    ```bash
-    npm run migrate:up
-    # or
-    yarn migrate:up
-    ```
-
-## 🛠️ Technology Stack
-
-*   **Framework**: NestJS
-*   **Database**: MongoDB (via Mongoose)
-*   **Language**: TypeScript
-*   **Authentication**: JWT (JSON Web Tokens)
-*   **Validation**: class-validator, class-transformer
-*   **Monitoring**: Winston
-*   **Testing**: Jest, Supertest
-
-## 📂 Project Structure
+## 🏗️ Architecture
 
 ```
 Alixco-luce/
-├── src/
-│   ├── api/              # API Routes & Controllers
-│   ├── modules/          # Feature Modules (core, database, auth, etc.)
-│   │   └── greenhouse/   # Greenhouse specific logic (screens, greenhouses, zones, etc.)
-│   ├── database/         # Database configuration & migrations
-│   ├── shared/           # Shared services, interceptors, guards
-│   └── utils/            # Utility functions
-├── test/                 # Test suites
-├── migrations/           # Database migration scripts
-├── .env.example          # Environment variable template
-└── package.json          # Project dependencies
+├── frontend/                 # Application React (UI/UX)
+│   ├── src/
+│   │   ├── components/      # Composants réutilisables
+│   │   ├── pages/           # Pages application
+│   │   ├── contexts/        # Context API (Auth, Cart, Admin)
+│   │   ├── lib/             # Utilitaires, API client
+│   │   └── hooks/           # Custom React hooks
+│   └── public/              # Assets statiques
+│
+├── backend/                  # API Flask/Python
+│   ├── server.py            # Serveur principal
+│   └── requirements.txt      # Dépendances Python
+│
+└── docs/                    # Documentation projet
 ```
 
-## 📜 License
+## ⚡ Démarrage rapide
+
+### Prérequis
+
+- **Node.js** >= 18.0.0
+- **npm** >= 9.0.0 (ou **yarn**)
+- **Python** >= 3.9
+- **pip** ou **conda**
+
+### Installation
+
+1. **Cloner le repository**
+   ```bash
+   git clone https://github.com/Hop-Syder/Alixco-luce.git
+   cd Alixco-luce
+   ```
+
+2. **Installer les dépendances Frontend**
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
+
+3. **Installer les dépendances Backend**
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   cd ..
+   ```
+
+### Lancer l'application
+
+#### Mode développement
+
+**Terminal 1 - Frontend**
+```bash
+cd frontend
+npm start
+```
+→ Accessible sur `http://localhost:3000`
+
+**Terminal 2 - Backend**
+```bash
+# Terminal 1 - Backend
+cd backend && python server.py
+
+# Terminal 2 - Frontend  
+cd frontend && npm start
+```
+→ API disponible sur `http://localhost:5000`
+
+#### Build production
+
+```bash
+# Frontend
+cd frontend
+npm run build
+
+# Backend
+cd backend
+pip install -r requirements.txt
+```
+
+## 🛠️ Stack technologique
+
+### Frontend
+| Technologie | Utilisation |
+|---|---|
+| **React** | Framework UI |
+| **Tailwind CSS** | Styling avancé |
+| **React Router** | Navigation |
+| **Axios** | Requêtes HTTP |
+| **Context API** | State management |
+| **Shadcn/ui** | Composants UI premium |
+
+### Backend
+| Technologie | Utilisation |
+|---|---|
+| **Flask** | Framework API |
+| **Python** | Logique métier |
+| **SQLAlchemy** | ORM (optionnel) |
+| **JWT** | Authentification |
+
+## 📂 Structure détaillée
+
+### Frontend (`/frontend`)
+```
+src/
+├── components/
+│   ├── admin/               # Layout administrateur
+│   ├── ui/                  # Composants primitifs (button, card, etc.)
+│   ├── Footer.jsx
+│   ├── ProductCard.jsx
+│   ├── Skeletons.jsx
+│   └── WhatsAppFloat.jsx
+├── pages/
+│   ├── admin/               # Pages admin
+│   ├── Home.jsx
+│   ├── Catalog.jsx
+│   ├── Cart.jsx
+│   ├── Profile.jsx
+│   └── ...
+├── contexts/
+│   ├── AuthContext.js       # Authentification utilisateur
+│   ├── AdminAuthContext.js  # Authentification admin
+│   └── CartContext.js       # Panier
+├── hooks/
+│   └── use-toast.js
+├── lib/
+│   ├── api.js               # Configuration axios
+│   └── utils.js             # Fonctions utilitaires
+└── App.js
+```
+
+### Backend (`/backend`)
+```
+├── server.py                # Point d'entrée
+├── requirements.txt         # Dépendances Python
+└── ...                      # Modules métier
+```
+
+## ⚙️ Configuration
+
+### Variables d'environnement Frontend
+
+Créer `.frontend/.env`:
+```env
+REACT_APP_API_URL=http://localhost:5000
+REACT_APP_NAME=Alixco Luce
+```
+
+### Variables d'environnement Backend
+
+Créer `backend/.env`:
+```env
+FLASK_ENV=development
+DEBUG=True
+SECRET_KEY=your-secret-key-here
+```
+
+## 👨‍💻 Développement
+
+### Standards de code
+
+- **ESLint** + **Prettier** pour le frontend
+- **PEP 8** pour le backend
+- **Clean Code** et **SOLID principles**
+
+### Branche de développement
+
+```bash
+git checkout -b feature/nom-feature
+# ... faire les changements ...
+git push origin feature/nom-feature
+```
+
+## 🚀 Déploiement
+
+### Frontend
+
+```bash
+cd frontend
+npm run build
+# Puis déployer le dossier 'build' sur Vercel, Netlify, etc.
+```
+
+### Backend
+
+```bash
+cd backend
+# Déployer sur Railway, Heroku, AWS, etc.
+python server.py
+```
+
+## 🧪 Tests
+
+```bash
+# Frontend (Jest + React Testing Library)
+cd frontend
+npm test
+
+# Backend (Pytest)
+cd backend
+pytest
+```
+
+## 📚 Documentation
+
+- [Plan de développement](./plan.md)
+- [Guidelines de design](./design_guidelines.md)
+- [Résultats des tests](./test_result.md)
+
+## 👥 Auteur
+
+**@hopsyder** - Nexus AI Dev Team
+
+## 📄 Licence
+
+Distributed under the MIT License. See LICENSE file for more information.
+
+---
+
+**Pour contribuer** : Consultez les guidelines de développement et créez une pull request ! 🚀
 
 This project is proprietary software. All rights reserved. Contact the owners for usage rights.
 
