@@ -58,7 +58,7 @@
         "--alix-paper": "#F4EDE2",
         "--alix-ink": "#1F1A16",
         "--alix-walnut": "#3A2A22",
-        "--alix-bronze": "#B07A3A",
+        "--alix-bronze": "#dc3c18",
         "--alix-brass": "#C9A46A",
         "--alix-forest": "#1F4D3A",
         "--alix-whatsapp": "#25D366",
@@ -142,7 +142,7 @@
         "muted": "#5B514A"
       },
       "accents": {
-        "bronze": "#B07A3A",
+        "bronze": "#dc3c18",
         "brass": "#C9A46A",
         "forest": "#1F4D3A",
         "whatsapp": "#25D366"
@@ -164,7 +164,7 @@
       "surface": "#F8FAFC",
       "text": "#0F172A",
       "muted": "#475569",
-      "accent": "#B07A3A",
+      "accent": "#dc3c18",
       "success": "#16A34A",
       "warning": "#D97706",
       "danger": "#DC2626"

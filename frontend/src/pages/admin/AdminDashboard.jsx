@@ -82,7 +82,7 @@ const AdminDashboard = () => {
                   formatter={(value, name) => [name === "revenue" ? formatFCFA(value) : value, name === "revenue" ? "CA" : "Commandes"]}
                   labelFormatter={(label) => `Date: ${label}`}
                 />
-                <Line type="monotone" dataKey="revenue" stroke="#B07A3A" strokeWidth={2} dot={false} name="revenue" />
+                <Line type="monotone" dataKey="revenue" stroke="#dc3c18" strokeWidth={2} dot={false} name="revenue" />
               </LineChart>
             </ResponsiveContainer>
           </div>
