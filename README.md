@@ -86,7 +86,7 @@ Alixco-luce/
 **Terminal 1 - Frontend**
 ```bash
 cd frontend
-npm start
+npm run dev
 ```
 → Accessible sur `http://localhost:3000`
 

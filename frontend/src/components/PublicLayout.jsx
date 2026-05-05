@@ -38,6 +38,7 @@ const PublicLayout = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[hsl(var(--background))]">
+      <a href="#main" className="skip-link">Aller au contenu</a>
       <header
         className={`sticky top-0 z-40 border-b bg-[hsl(var(--background))]/90 backdrop-blur supports-[backdrop-filter]:bg-[hsl(var(--background))]/75 transition-shadow ${scrolled ? "shadow-sm" : ""}`}
       >
@@ -144,7 +145,7 @@ const PublicLayout = () => {
         </div>
       </header>
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <Outlet />
       </main>
 

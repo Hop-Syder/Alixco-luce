@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="group rounded-xl border bg-[hsl(var(--card))] p-3 transition-shadow hover:alix-card-shadow-hover alix-card-shadow flex flex-col"
+      className="group rounded-xl border bg-[hsl(var(--card))] p-3 transform-gpu alix-interaction-transition alix-lift-hover hover:alix-card-shadow-hover alix-card-shadow flex flex-col"
       data-testid="product-card"
     >
       <Link to={`/produit/${product.id}`} className="block relative overflow-hidden rounded-lg bg-[hsl(var(--muted))] aspect-[4/5]">

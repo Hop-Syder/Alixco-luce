@@ -44,9 +44,6 @@ const Home = () => {
         <div className="absolute inset-0 alix-noise opacity-50" aria-hidden />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-16 sm:pt-20 sm:pb-24 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[hsl(var(--card))] border text-xs font-medium text-[var(--alix-bronze)] mb-5">
-              <Sparkles className="h-3.5 w-3.5" /> Artisanat de luxe — Made in Bénin
-            </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-[hsl(var(--foreground))]">
               L'art de la<br />
               <span className="text-[var(--alix-bronze)]">personnalisation</span><br />
@@ -96,7 +93,7 @@ const Home = () => {
               <div className="absolute inset-0 alix-noise opacity-40" />
               <div className="relative h-full flex flex-col justify-center items-center p-4 text-center">
                 <Sparkles className="h-8 w-8 text-[var(--alix-bronze)] mb-2" />
-                <div className="font-display text-lg leading-tight text-[var(--alix-walnut)]">Créations<br/>uniques</div>
+                <div className="font-display text-lg leading-tight text-[var(--alix-walnut)]">Créations<br />uniques</div>
               </div>
             </div>
             <div className="col-span-2 row-span-3 rounded-2xl bg-[hsl(var(--card))] border p-5 flex flex-col justify-between alix-card-shadow">

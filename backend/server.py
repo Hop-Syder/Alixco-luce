@@ -14,6 +14,7 @@ import uuid
 from datetime import datetime, timezone, timedelta
 import bcrypt
 import jwt
+import uvicorn
 from urllib.parse import quote
 
 ROOT_DIR = Path(__file__).parent
@@ -900,3 +901,12 @@ async def on_startup():
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "server:app",
+        host=os.environ.get("HOST", "0.0.0.0"),
+        port=int(os.environ.get("PORT", 5000)),
+        reload=os.environ.get("ENVIRONMENT", "development") == "development",
+    )

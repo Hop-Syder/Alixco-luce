@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { AlixLogoIcon } from "./icons/BrandIcons";
 
 const Footer = () => {
   return (
     <footer className="mt-16 border-t bg-[hsl(var(--card))]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="font-display text-2xl">Alixco</span>
-            <span className="font-display text-2xl text-[var(--alix-bronze)]">Luxe</span>
+          <div className="flex items-center gap-3 mb-3">
+            <AlixLogoIcon className="h-8 w-auto" />
           </div>
           <p className="text-sm text-[hsl(var(--muted-foreground))] max-w-md">
             L'art de la personnalisation artisanale — gravure sur bois et métal, création de tableaux, bijoux personnalisés, vêtements et accessoires sur mesure au Bénin.
