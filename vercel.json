@@ -1,0 +1,18 @@
+{
+  "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
+  "installCommand": "cd frontend && npm install --legacy-peer-deps",
+  "outputDirectory": "frontend/build",
+  "framework": "react",
+  "env": {
+    "REACT_APP_API_URL": "@react_app_api_url",
+    "REACT_APP_NAME": "Alixco Luce",
+    "REACT_APP_WHATSAPP_NUMBER": "2290197412933",
+    "REACT_APP_ENV": "production"
+  },
+  "regions": ["iad1"],
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  }
+}
