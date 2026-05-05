@@ -2,7 +2,6 @@
   "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
   "installCommand": "cd frontend && npm install --legacy-peer-deps",
   "outputDirectory": "frontend/build",
-  "framework": "react",
   "env": {
     "REACT_APP_API_URL": "@react_app_api_url",
     "REACT_APP_NAME": "Alixco Luce",
@@ -14,5 +13,11 @@
     "deploymentEnabled": {
       "main": true
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
