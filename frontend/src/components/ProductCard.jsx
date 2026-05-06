@@ -5,13 +5,13 @@ import { resolveImage, formatFCFA } from "../lib/api";
 import { Button } from "./ui/button";
 import { useCart } from "../contexts/CartContext";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, className = "" }) => {
   const { addItem } = useCart();
   const img = product.images && product.images[0];
 
   return (
     <div
-      className="group rounded-xl border bg-[hsl(var(--card))] p-3 transform-gpu alix-interaction-transition alix-lift-hover hover:alix-card-shadow-hover alix-card-shadow flex flex-col"
+      className={`group rounded-xl border bg-[hsl(var(--card))] p-3 transform-gpu alix-interaction-transition alix-lift-hover hover:alix-card-shadow-hover alix-card-shadow flex flex-col ${className}`}
       data-testid="product-card"
     >
       <Link to={`/produit/${product.id}`} className="block relative overflow-hidden rounded-lg bg-[hsl(var(--muted))] aspect-[4/5]">
@@ -34,23 +34,29 @@ const ProductCard = ({ product }) => {
           </span>
         )}
       </Link>
-      <div className="mt-3 flex-1 flex flex-col">
-        <Link to={`/produit/${product.id}`} className="font-semibold line-clamp-2 hover:text-[var(--alix-bronze)] transition-colors" data-testid="product-card-title">
+      <div className="mt-3 flex-1 flex flex-col px-1">
+        <Link 
+          to={`/produit/${product.id}`} 
+          className="font-display text-base leading-tight line-clamp-1 hover:text-[var(--alix-brass)] transition-colors opacity-95" 
+          data-testid="product-card-title"
+        >
           {product.name}
         </Link>
-        <div className="mt-1 text-[13px] text-[hsl(var(--muted-foreground))]">
+        <div className="mt-1 text-[10px] uppercase tracking-[0.2em] font-bold opacity-60">
           {product.material || (product.customizable ? "Personnalisable" : "")}
         </div>
-        <div className="mt-auto pt-3 flex items-center justify-between gap-2">
-          <div className="font-bold text-sm sm:text-base" data-testid="product-card-price">{formatFCFA(product.price)}</div>
+        <div className="mt-auto pt-4 flex items-center justify-between gap-2">
+          <div className="font-display text-lg font-medium" data-testid="product-card-price">
+            {formatFCFA(product.price)}
+          </div>
           <Button
             size="sm"
             variant="secondary"
             onClick={() => addItem(product, 1, "")}
             data-testid="product-card-add-to-cart-button"
-            className="rounded-lg"
+            className="h-8 rounded-lg px-3 text-[10px] bg-[var(--alix-ink)] text-white hover:bg-[var(--alix-walnut)]"
           >
-            <ShoppingBag className="h-4 w-4 mr-1" /> Ajouter
+            <ShoppingBag className="h-3 w-3 mr-1.5" /> Ajouter
           </Button>
         </div>
       </div>
