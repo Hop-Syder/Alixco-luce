@@ -1,3 +1,13 @@
+# /**
+#  * @author @hopsyder
+#  * @organization Nexus Partners
+#  * @description Point d'entrée de l'API Backend Flask/FastAPI
+#  * @created 2026-05-05
+#  * @updated 2026-05-05
+#  * 🌐 ceo.nexuspartners.xyz
+#  * 📧 daoudaabassichristian@gmail.com
+#  * ──────────────────────────────────
+# */
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, UploadFile, File, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials

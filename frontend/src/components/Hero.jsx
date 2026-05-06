@@ -1,3 +1,13 @@
+/**
+ * @author @hopsyder
+ * @organization Nexus Partners
+ * @description Composant Hero de la page d'accueil
+ * @created 2026-05-05
+ * @updated 2026-05-05
+ * 🌐 ceo.nexuspartners.xyz
+ * 📧 daoudaabassichristian@gmail.com
+ * ──────────────────────────────────
+ */
 import React from "react";
 import { Button } from "./ui/button";
 import { MessageSquare } from "lucide-react";

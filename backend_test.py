@@ -7,7 +7,7 @@ import requests
 import sys
 from datetime import datetime
 
-BASE_URL = "https://shop-manager-303.preview.emergentagent.com/api"
+BASE_URL = "http://localhost:5000/api"
 
 class AlixcoAPITester:
     def __init__(self):

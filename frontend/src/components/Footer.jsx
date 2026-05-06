@@ -1,3 +1,14 @@
+/**
+ * @author @hopsyder
+ * @organization Nexus Partners
+ * @description Composant Footer avec mentions Nexus Partners
+ * @created 2026-05-05
+ * @updated 2026-05-05
+ * 🌐 ceo.nexuspartners.xyz
+ * 📧 daoudaabassichristian@gmail.com
+ * ──────────────────────────────────
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { MessageCircle, MapPin, Phone, Mail } from "lucide-react";
@@ -46,6 +57,9 @@ const Footer = () => {
       </div>
       <div className="border-t py-5 text-center text-xs text-[hsl(var(--muted-foreground))]">
         © {new Date().getFullYear()} Alixco Luxe — Tous droits réservés.
+        <div className="mt-1 opacity-80">
+          Développé et conçu par <span className="font-semibold text-[hsl(var(--foreground))]">Nexus Partners</span>
+        </div>
       </div>
     </footer>
   );
